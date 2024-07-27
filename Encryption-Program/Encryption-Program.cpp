@@ -9,49 +9,40 @@
 using namespace std;
 
 
-string strToBinary(string s)
-{
-	int n = s.length();
 
+void encrypt() {
+	fstream file;
+	string input = "";
 
-	for (int i = 0; i <= n; i++)
-	{
-		// convert each char to ASCII value
-		int val = int(s[i]);
+	cout << "Opening file..." << endl;
+	file.open("file.dat", ios::in | ios::out | ios::binary | ios::trunc);
 
-		// Convert each ASCII value to binary
-		string bin = "";
-		while (val > 0)
-		{
-			(val % 2) ? bin.push_back('1') :
-				bin.push_back('0');
-			val /= 2;
-		}
-		reverse(bin.begin(), bin.end());
+	cout << "What should the file contain?" << endl;
+	cin >> input;
 
-		return bin;
-	}
+	cout << "Writing file..." << endl;
+	cout << "input: " << input << endl;
+	file.write(new char[input.length() + 1], input.length());
 }
 
-int main()
-{
-	fstream file;
+
+
+int main() {
 	int choice;
 	cout << "Press 1 to encrypt. Press 2 to decrypt." << endl;
 
 	cin >> choice;
 
-	if (choice == 1) {
-		//encrypt();
-		cout << "Opening file..." << endl;
-		file.open("file.dat", ios::in | ios::out | ios::binary);
-		file.write(strToBinary("h"), 3);
-	}
-	else if (choice == 2) {
-		//decrypt();
-	}
-	else {
-		cout << "Invalid input. Please enter 1 or 2." << endl;
+	switch (choice) {
+		case 1:
+			encrypt();
+			break;
+		case 2:
+			//decrypt();
+			break;
+		default:
+			cout << "Invalid input. Please enter 1 or 2." << endl;
+			break;
 	}
 	return 0;
 }
