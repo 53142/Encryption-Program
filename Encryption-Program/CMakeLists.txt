@@ -3,7 +3,7 @@
 #
 
 # Add source to this project's executable.
-add_executable (Encryption-Program "Encryption-Program.cpp" "Encryption-Program.h")
+add_executable (Encryption-Program "Encryption-Program.cpp" )
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Encryption-Program PROPERTY CXX_STANDARD 20)
